@@ -5,15 +5,13 @@ institution_id : bhInst.
 
 status_functions:
 
-states: play(A,R,G), responsible(G,S), committed(A,Mission,S), achieved(S,G,A), done(S,G,A)/*, well_formed(Group)*/.
-
-
+states: play(A,R,G), responsible(G,S), committed(A,Mission,S), achieved(S,G,A), paid(S,G,A), done(S,G,A)/*, well_formed(Group)*/.
 
 
 constitutive_rules:
 
 
-/*In this application, the agent Giacomo is allways the house owner.*/
+/*In this application, the agent Giacomo is always the house owner.*/
 1: count-as play(giacomo,house_owner,"hsh_group").
 
 /*Rules 2 to 10: The state where the property currentWinner(Auction,Agent) holds counts as Agent playing some role in the house building.*/
@@ -24,7 +22,6 @@ constitutive_rules:
 3: currentWinner(auction_for_Floors,Agent)
    count-as play(Agent,bricklayer,"hsh_group")
    while nticks(clock,Time)&(Time>=8000).
-
 
 4: currentWinner(auction_for_Walls,Agent)
    count-as play(Agent,bricklayer,"hsh_group")
@@ -71,7 +68,6 @@ constitutive_rules:
     count-as committed(A,prepare_site,"bhsch")
     while responsible("hsh_group","bhsch").
 
-
 14: play(A,bricklayer,"hsh_group")
     count-as committed(A,lay_floors,"bhsch")
     while responsible("hsh_group","bhsch").
@@ -103,8 +99,6 @@ constitutive_rules:
 21: play(A,painter,"hsh_group")
     count-as committed(A,paint_house,"bhsch")
     while responsible("hsh_group","bhsch").
-
-
 
 
 /* Rules 23 to 22: the occurrence of some events in the environment counts-as, in the institution, the state achieved(S,G,A) */
@@ -141,7 +135,11 @@ constitutive_rules:
 32: count-as achieved("bhsch",interior_painted,Agent)
     when paintInterior[sai__agent(Agent)].
 
+/* Rules for payment
 
+33: count-as paid("bhsch", floors_paid, Agent)
+    when payFloors[sai_agent(Agent)].
+*/
 
 /* Rules 23 to 22: the occurrence of some events in the environment counts-as, in the institution, the state achieved(S,G,A) */
 22: count-as done(bhsch,site_prepared,Agent)
