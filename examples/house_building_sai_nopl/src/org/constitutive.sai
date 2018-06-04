@@ -13,7 +13,7 @@ states: play(A,R,G), responsible(G,S), committed(A,Mission,S), achieved(S,G,A), 
 constitutive_rules:
 
 
-/*In this application, the agent Giacomo is allways the house owner.*/
+/*In this application, the agent Giacomo is always the house owner.*/
 1: count-as play(giacomo,house_owner,"hsh_group").
 
 /*Rules 2 to 10: The state where the property currentWinner(Auction,Agent) holds counts as Agent playing some role in the house building.*/
@@ -24,7 +24,6 @@ constitutive_rules:
 3: currentWinner(auction_for_Floors,Agent)
    count-as play(Agent,bricklayer,"hsh_group")
    while nticks(clock,Time)&(Time>=8000).
-
 
 4: currentWinner(auction_for_Walls,Agent)
    count-as play(Agent,bricklayer,"hsh_group")
@@ -67,10 +66,13 @@ constitutive_rules:
     count-as committed(A,management_of_house_building,"bhsch")
     while responsible("hsh_group","bhsch").
 
+33: play(A,house_owner,"hsh_group")
+    count-as committed(A,pay_site_prep,"bhsch")
+    while responsible("hsh_group","bhsch").
+
 13: play(A,site_prep_contractor,"hsh_group")
     count-as committed(A,prepare_site,"bhsch")
     while responsible("hsh_group","bhsch").
-
 
 14: play(A,bricklayer,"hsh_group")
     count-as committed(A,lay_floors,"bhsch")
@@ -105,11 +107,12 @@ constitutive_rules:
     while responsible("hsh_group","bhsch").
 
 
-
-
 /* Rules 23 to 22: the occurrence of some events in the environment counts-as, in the institution, the state achieved(S,G,A) */
 22: count-as achieved("bhsch",site_prepared,Agent)
     when prepareSite[sai__agent(Agent)].
+
+34: count-as achieved("bhsch",prep_site_paid,Agent)
+    when pay[sai__agent(Agent)].
 
 23: count-as achieved("bhsch",electrical_system_installed,Agent)
     when installElectricalSystem[sai__agent(Agent)].
@@ -146,6 +149,7 @@ constitutive_rules:
 /* Rules 23 to 22: the occurrence of some events in the environment counts-as, in the institution, the state achieved(S,G,A) */
 22: count-as done(bhsch,site_prepared,Agent)
     when prepareSite[sai__agent(Agent)].
+
 
 23: count-as done(bhsch,electrical_system_installed,Agent)
     when installElectricalSystem[sai__agent(Agent)].

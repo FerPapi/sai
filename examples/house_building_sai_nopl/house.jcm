@@ -93,7 +93,10 @@ mas house_building {
      artifact auction_for_Plumbing: tools.AuctionArt("Plumbing", 500)
      artifact auction_for_ElectricalSystem: tools.AuctionArt("ElectricalSystem", 500)
      artifact auction_for_Painting: tools.AuctionArt("Painting", 1200)
+
      artifact clock : cartago.tools.Clock()
+
+     /*artifact bank_artifact : tools.BankArt("B1", 5000)*/
    }
 
    workspace wsp_sai {
