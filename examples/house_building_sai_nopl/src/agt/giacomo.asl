@@ -7,7 +7,7 @@
 
 
 /* Initial beliefs and rules */
-
+original_balance(150).
 // counts the number of tasks based on the observable properties of the auction artifacts
 number_of_tasks(NS) :- .findall( S, task(S), L) & .length(L,NS).
 
@@ -20,14 +20,19 @@ number_of_tasks(NS) :- .findall( S, task(S), L) & .length(L,NS).
 /* Plans */
 
 +!have_a_house
-   <- !setup_sai;
-      setChampion;
-      joinWorkspace("wsp_auction",I);
-      //?jcm__art("clock", Clock);
-      lookupArtifact("clock", Clock);
-      start[artifact_id(Clock)]; //while the clock is counting the bidders can bid
-      !contract; // hire the companies that will build the house
-      !execute.  // (simulates) the execution of the construction
+   <-
+   !makeBankAccount;
+   !setup_sai;
+   joinWorkspace("wsp_auction",I);
+   lookupArtifact("clock", Clock);
+   start[artifact_id(Clock)]; //while the clock is counting the bidders can bid
+   !contract; // hire the companies that will build the house
+   !execute.  // (simulates) the execution of the construction
+
++!makeBankAccount : .my_name(Me) & .term2string(Me,MeS) & original_balance(OB)
+    <-
+    makeAccount(MeS, OB);
+    .
 
 +!setup_sai
    <- !setup_sai_wsp_ora4mas; //each plan "setup_sai_X" sets links the workspace X to the SAI engine
@@ -159,11 +164,12 @@ number_of_tasks(NS) :- .findall( S, task(S), L) & .length(L,NS).
 
 
 +!show_winners
-   <- for ( currentWinner(Ag)[artifact_id(ArtId)] ) {
-         ?currentBid(Price)[artifact_id(ArtId)]; // check the current bid
-         ?task(Task)[artifact_id(ArtId)];          // and the task it is for
-         println("Winner of task ", Task," is ", Ag, " for ", Price)
-      }.
+    <- for ( currentWinner(Ag)[artifact_id(ArtId)] ) {
+        ?currentBid(Price)[artifact_id(ArtId)]; // check the current bid
+        ?task(Task)[artifact_id(ArtId)];          // and the task it is for
+        println("Winner of task ", Task," is ", Ag, " for ", Price)
+    }.
+
 
 
 /* Plans for managing the execution of the house construction */

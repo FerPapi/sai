@@ -7,12 +7,19 @@
 
 my_price(1500). // initial belief
 
+original_balance(0).
 
+!makeBankAccount.
+
++!makeBankAccount : .my_name(Me) & .term2string(Me,MeS) & original_balance(OB)
+    <-
+    makeAccount(MeS, OB);
+    .
 
 +currentBid(V)[artifact_id(Art)]        // there is a new value for current bid
     : not i_am_winning(Art) &           // I am not the winner
       my_price(P) & P < V &             // I can offer a better bid
-      hasBidden(Bid)                    //this is not the first bid, then it is possible to bit immediately 
+      hasBidden(Bid)                    //this is not the first bid, then it is possible to bit immediately
    <- bid( math.max(V-150,P) ).         // place my bid offering a cheaper service
 
 
@@ -25,14 +32,13 @@ my_price(1500). // initial belief
 
 
 
+
 /* plans for execution phase */
 
 /*{ include("org_code.asl") }
-  
-+!site_prepared 
-   <- ?jcm__ws("wsp_house",WspHouse); 
+
++!site_prepared
+   <- ?jcm__ws("wsp_house",WspHouse);
    	  cartago.set_current_wsp(WspHouse);
       prepareSite. // simulates the action (in GUI artifact)
-*/    
-
-      
+*/

@@ -1,17 +1,24 @@
 // This company bids for all tasks
-// Strategy: bids a random value 
+// Strategy: bids a random value
 
 { include("common.asl") }
 { include("$jacamoJar/templates/common-cartago.asl") }
 { include("$jacamoJar/templates/common-moise.asl") }
 
+original_balance(0).
 
+!makeBankAccount.
+
++!makeBankAccount : .my_name(Me) & .term2string(Me,MeS) & original_balance(OB)
+    <-
+    makeAccount(MeS, OB);
+    .
 
 +task(S)[artifact_id(Art)]:
-   hasBidden(Bid)                    //this is not the first bid, then it is possible to bit immediately 
+   hasBidden(Bid)                    //this is not the first bid, then it is possible to bit immediately
    <- .wait(math.random(500)+50);
-      Bid = math.floor(math.random(10000))+800;     
-      +hasBidden(Bid); 
+      Bid = math.floor(math.random(10000))+800;
+      +hasBidden(Bid);
       bid( Bid )[artifact_id(Art)]. // recall that the artifact ignores if this
 	                                // agent places a bid that is higher than
 									// the current bid
@@ -22,10 +29,12 @@
    <- .wait(math.random(500)+50);
       Bid = math.floor(math.random(10000))+800;
       .wait(4500); //as it is the first bid, agents wait a time before start bidding to ensure that all the infrastructure, namely, the link between SAI and CArtAgO, is ready
-      +hasBidden(Bid); 
+      +hasBidden(Bid);
       bid( Bid )[artifact_id(Art)]. // recall that the artifact ignores if this
 	                                // agent places a bid that is higher than
 									// the current bid
+
+
 
 
 { include("org_code.asl") }

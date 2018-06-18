@@ -22,7 +22,7 @@ mas house_building {
         focus: wsp_ora4mas.bhsch
         focus: wsp_ora4mas.hsh_group
         focus: wsp_house.housegui
-        focus: wsp_payment_infra.championArt
+        focus: wsp_payment_infra.bank
    }
 
    agent companyA{   // builder agents (see their code for details)
@@ -32,6 +32,8 @@ mas house_building {
       focus: wsp_ora4mas.hsh_group
       focus: wsp_house.housegui
       focus: wsp_sai.sai
+      focus: wsp_payment_infra.bank
+
    }
    agent companyB{
       focus: wsp_auction.auction_for_SitePreparation
@@ -40,6 +42,8 @@ mas house_building {
       focus: wsp_ora4mas.hsh_group
       focus: wsp_house.housegui
       focus: wsp_sai.sai
+      focus: wsp_payment_infra.bank
+
    }
    agent companyC {
       instances: 3
@@ -56,6 +60,8 @@ mas house_building {
       focus: wsp_ora4mas.hsh_group
       focus: wsp_house.housegui
       focus: wsp_sai.sai
+      focus: wsp_payment_infra.bank
+
    }
    agent companyD {
       instances: 5
@@ -72,6 +78,8 @@ mas house_building {
 	  focus: wsp_ora4mas.hsh_group
 	  focus: wsp_house.housegui
 	  focus: wsp_sai.sai
+      focus: wsp_payment_infra.bank
+
    }
    agent companyE{
    	focus: wsp_auction.auction_for_Floors
@@ -82,6 +90,8 @@ mas house_building {
         focus: wsp_ora4mas.hsh_group
         focus: wsp_house.housegui
         focus: wsp_sai.sai
+        focus: wsp_payment_infra.bank
+
    }
 
 
@@ -113,8 +123,7 @@ mas house_building {
   }
 
   workspace wsp_payment_infra{
-      artifact championArt: tools.HallOfFameArt("Germany")
-
+      artifact bank: tools.BankArt()
   }
 
    asl-path:  src/agt, src/agt/inc
