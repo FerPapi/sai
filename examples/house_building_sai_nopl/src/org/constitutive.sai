@@ -64,6 +64,10 @@ constitutive_rules:
     count-as committed(A,management_of_house_building,"bhsch")
     while responsible("hsh_group","bhsch").
 
+100: play(A,house_owner,"hsh_group")
+    count-as committed(A,pay_site_prep,"bhsch")
+    while responsible("hsh_group","bhsch").
+
 13: play(A,site_prep_contractor,"hsh_group")
     count-as committed(A,prepare_site,"bhsch")
     while responsible("hsh_group","bhsch").
