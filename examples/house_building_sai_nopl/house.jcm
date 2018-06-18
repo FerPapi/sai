@@ -22,6 +22,7 @@ mas house_building {
         focus: wsp_ora4mas.bhsch
         focus: wsp_ora4mas.hsh_group
         focus: wsp_house.housegui
+        focus: wsp_payment_infra.championArt
    }
 
    agent companyA{   // builder agents (see their code for details)
@@ -95,8 +96,6 @@ mas house_building {
      artifact auction_for_Painting: tools.AuctionArt("Painting", 1200)
 
      artifact clock : cartago.tools.Clock()
-
-     /*artifact bank_artifact : tools.BankArt("B1", 5000)*/
    }
 
    workspace wsp_sai {
@@ -111,6 +110,11 @@ mas house_building {
 
   workspace wsp_house{
   	  artifact housegui: simulator.House
+  }
+
+  workspace wsp_payment_infra{
+      artifact championArt: tools.HallOfFameArt("Germany")
+
   }
 
    asl-path:  src/agt, src/agt/inc

@@ -21,6 +21,7 @@ number_of_tasks(NS) :- .findall( S, task(S), L) & .length(L,NS).
 
 +!have_a_house
    <- !setup_sai;
+      setChampion;
       joinWorkspace("wsp_auction",I);
       //?jcm__art("clock", Clock);
       lookupArtifact("clock", Clock);
@@ -32,6 +33,7 @@ number_of_tasks(NS) :- .findall( S, task(S), L) & .length(L,NS).
    <- !setup_sai_wsp_ora4mas; //each plan "setup_sai_X" sets links the workspace X to the SAI engine
       !setup_sai_wsp_auction;
       !setup_sai_wsp_house;
+      !setup_sai_wsp_payment;
       .
 
 //-!setup_sai
@@ -72,6 +74,24 @@ number_of_tasks(NS) :- .findall( S, task(S), L) & .length(L,NS).
 -!setup_sai_wsp_house
    <- .wait(500);
       !setup_sai_wsp_house.
+
+//**Adding the payment infrastructure to SAI engine
++!setup_sai_wsp_payment
+   <-
+      joinWorkspace("wsp_sai",Wsp_Sai);
+      lookupArtifact("sai",ArtSai);
+      focus(ArtSai);
+      getRuleEngine(RE)[artifact_id(ArtSai)];
+
+      joinWorkspace("wsp_payment_infra",Wsp_payment);
+      setWSPRuleEngine(RE)[artifact_id(Wsp_payment)]; //links the woskspace "wsp_house" to SAI. Thus, the SAI engine is fed with the environmental facts from that workspace
+      .
+
+-!setup_sai_wsp_payment
+   <- .wait(500);
+      !setup_sai_wsp_payment.
+
+//** ENDS payment infra
 
 +!setup_sai_wsp_ora4mas
    <-//?jcm__ws("wsp_sai",WspSai); //look to the SAI workspace
