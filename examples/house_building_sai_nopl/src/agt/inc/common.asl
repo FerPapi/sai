@@ -25,9 +25,9 @@ i_am_winning(Art)   // check if I placed the current best bid on auction artifac
      X==sai__freestandingY & T\==true
    <-
    println("I am obliged to ",Goal,". I found a constitutive rule that shows me. I have to produce the event ", ToDo);
-   //?jcm__ws("wsp_house",WspHouse); //look to the house workspace
-   //  cartago.set_current_wsp(WspHouse);
-   if (ToDo==setChampion) {
+   if (ToDo==payment) {
+       println("Ag,R,done(Scheme,Goal,Ag),Deadline", Ag,R,done(Scheme,Goal,Ag),Deadline)
+       println("constitutive_rule(X,done(Scheme,Goal,Ag),ToDo[sai__agent(Ag)],M)", constitutive_rule(X,done(Scheme,Goal,Ag),ToDo[sai__agent(Ag)],M));
        println("ToDo[artifact_id(House)] :", ToDo[artifact_id(House)]);
        ToDo[artifact_id(House)];
    }

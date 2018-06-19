@@ -178,4 +178,4 @@ constitutive_rules:
     when paintInterior[sai__agent(Agent)].
 
 102: count-as done(bhsch,prep_site_paid,Agent)
-     when setChampion[sai__agent(Agent)].
+     when payment[sai__agent(Agent), sai__agent(site_prep_contractor)].
