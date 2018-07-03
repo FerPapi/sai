@@ -6,11 +6,9 @@
 
 mas house_building {
 
-
-
-   agent giacomo{ // the agent that wants to build a house
-   		focus: wsp_sai.sai
-   		focus: wsp_auction.auction_for_SitePreparation
+    agent giacomo{ // the agent that wants to build a house
+        focus: wsp_sai.sai
+        focus: wsp_auction.auction_for_SitePreparation
         focus: wsp_auction.auction_for_Floors
         focus: wsp_auction.auction_for_Walls
         focus: wsp_auction.auction_for_Roof
@@ -23,68 +21,10 @@ mas house_building {
         focus: wsp_ora4mas.hsh_group
         focus: wsp_house.housegui
         focus: wsp_payment_infra.bank
-   }
+    }
 
-   agent companyA{   // builder agents (see their code for details)
-      focus: wsp_auction.auction_for_Plumbing
-      focus: wsp_auction.clock
-      focus: wsp_ora4mas.bhsch
-      focus: wsp_ora4mas.hsh_group
-      focus: wsp_house.housegui
-      focus: wsp_sai.sai
-      focus: wsp_payment_infra.bank
-
-   }
-   agent companyB{
-      focus: wsp_auction.auction_for_SitePreparation
-      focus: wsp_auction.clock
-      focus: wsp_ora4mas.bhsch
-      focus: wsp_ora4mas.hsh_group
-      focus: wsp_house.housegui
-      focus: wsp_sai.sai
-      focus: wsp_payment_infra.bank
-
-   }
-   agent companyC {
-      instances: 3
-      focus: wsp_auction.auction_for_SitePreparation
-      focus: wsp_auction.auction_for_Floors
-      focus: wsp_auction.auction_for_Walls
-      focus: wsp_auction.auction_for_Roof
-      focus: wsp_auction.auction_for_WindowsDoors
-      focus: wsp_auction.auction_for_Plumbing
-      focus: wsp_auction.auction_for_ElectricalSystem
-      focus: wsp_auction.auction_for_Painting
-      focus: wsp_auction.clock
-      focus: wsp_ora4mas.bhsch
-      focus: wsp_ora4mas.hsh_group
-      focus: wsp_house.housegui
-      focus: wsp_sai.sai
-      focus: wsp_payment_infra.bank
-
-   }
-   agent companyD {
-      instances: 5
-      focus: wsp_auction.auction_for_SitePreparation
-	  focus: wsp_auction.auction_for_Floors
-	  focus: wsp_auction.auction_for_Walls
-	  focus: wsp_auction.auction_for_Roof
-	  focus: wsp_auction.auction_for_WindowsDoors
-	  focus: wsp_auction.auction_for_Plumbing
-	  focus: wsp_auction.auction_for_ElectricalSystem
-	  focus: wsp_auction.auction_for_Painting
-	  focus: wsp_auction.clock
-	  focus: wsp_ora4mas.bhsch
-	  focus: wsp_ora4mas.hsh_group
-	  focus: wsp_house.housegui
-	  focus: wsp_sai.sai
-      focus: wsp_payment_infra.bank
-
-   }
-   agent companyE{
-   	focus: wsp_auction.auction_for_Floors
-        focus: wsp_auction.auction_for_Walls
-        focus: wsp_auction.auction_for_Roof
+    agent companyA{   // builder agents (see their code for details)
+        focus: wsp_auction.auction_for_Plumbing
         focus: wsp_auction.clock
         focus: wsp_ora4mas.bhsch
         focus: wsp_ora4mas.hsh_group
@@ -94,6 +34,63 @@ mas house_building {
 
    }
 
+    agent companyB{
+        focus: wsp_auction.auction_for_SitePreparation
+        focus: wsp_auction.clock
+        focus: wsp_ora4mas.bhsch
+        focus: wsp_ora4mas.hsh_group
+        focus: wsp_house.housegui
+        focus: wsp_sai.sai
+        focus: wsp_payment_infra.bank
+
+    }
+    agent companyC {
+    instances: 3
+        focus: wsp_auction.auction_for_SitePreparation
+        focus: wsp_auction.auction_for_Floors
+        focus: wsp_auction.auction_for_Walls
+        focus: wsp_auction.auction_for_Roof
+        focus: wsp_auction.auction_for_WindowsDoors
+        focus: wsp_auction.auction_for_Plumbing
+        focus: wsp_auction.auction_for_ElectricalSystem
+        focus: wsp_auction.auction_for_Painting
+        focus: wsp_auction.clock
+        focus: wsp_ora4mas.bhsch
+        focus: wsp_ora4mas.hsh_group
+        focus: wsp_house.housegui
+        focus: wsp_sai.sai
+        focus: wsp_payment_infra.bank
+
+    }
+    agent companyD {
+    instances: 5
+        focus: wsp_auction.auction_for_SitePreparation
+        focus: wsp_auction.auction_for_Floors
+        focus: wsp_auction.auction_for_Walls
+        focus: wsp_auction.auction_for_Roof
+        focus: wsp_auction.auction_for_WindowsDoors
+        focus: wsp_auction.auction_for_Plumbing
+        focus: wsp_auction.auction_for_ElectricalSystem
+        focus: wsp_auction.auction_for_Painting
+        focus: wsp_auction.clock
+        focus: wsp_ora4mas.bhsch
+        focus: wsp_ora4mas.hsh_group
+        focus: wsp_house.housegui
+        focus: wsp_sai.sai
+        focus: wsp_payment_infra.bank
+
+    }
+    agent companyE{
+        focus: wsp_auction.auction_for_Floors
+        focus: wsp_auction.auction_for_Walls
+        focus: wsp_auction.auction_for_Roof
+        focus: wsp_auction.clock
+        focus: wsp_ora4mas.bhsch
+        focus: wsp_ora4mas.hsh_group
+        focus: wsp_house.housegui
+        focus: wsp_sai.sai
+        focus: wsp_payment_infra.bank
+    }
 
    workspace wsp_auction{
    	 artifact auction_for_SitePreparation: tools.AuctionArt("SitePreparation", 2000) // 2000 is the maximum value I can pay for the task

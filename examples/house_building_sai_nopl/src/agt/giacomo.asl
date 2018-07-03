@@ -16,7 +16,6 @@ number_of_tasks(NS) :- .findall( S, task(S), L) & .length(L,NS).
 
 !have_a_house.
 
-
 /* Plans */
 
 +!have_a_house
@@ -29,10 +28,19 @@ number_of_tasks(NS) :- .findall( S, task(S), L) & .length(L,NS).
    !contract; // hire the companies that will build the house
    !execute.  // (simulates) the execution of the construction
 
-+!makeBankAccount : .my_name(Me) & .term2string(Me,MeS) & original_balance(OB)
++!makeBankAccount : original_balance(OB)
     <-
-    makeAccount(MeS, OB);
+    makeAccount(OB);
+    depositValue(1234);
+    checkValue(B);
+    -+original_balance(B);
+    !tell_balance;
     .
+
++!tell_balance : original_balance(OB)
+   <-
+   .print(OB);
+   .
 
 +!setup_sai
    <- !setup_sai_wsp_ora4mas; //each plan "setup_sai_X" sets links the workspace X to the SAI engine
@@ -107,7 +115,7 @@ number_of_tasks(NS) :- .findall( S, task(S), L) & .length(L,NS).
 
 	 // ?jcm__ws("wsp_ora4mas",WspOra4mas);
    	  //cartago.set_current_wsp(WspOra4mas);
-          joinWorkspace("wsp_ora4mas",J);
+      joinWorkspace("wsp_ora4mas",J);
    	  lookupArtifact("bhsch",SchArtId);
       //getNormativeEngine(NEs)[artifact_id(SchArtId)];
       //addNormativeEngine(NEs)[artifact_id(ArtSai)]; //adds the normative engine from the scheme artifact to the sai engine. Thus, the normative engine is fed with the constitutive state

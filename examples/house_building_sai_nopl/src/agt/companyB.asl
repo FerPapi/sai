@@ -6,14 +6,13 @@
 { include("$jacamoJar/templates/common-moise.asl") }
 
 my_price(1500). // initial belief
-
 original_balance(0).
 
 !makeBankAccount.
 
 +!makeBankAccount : .my_name(Me) & .term2string(Me,MeS) & original_balance(OB)
     <-
-    makeAccount(MeS, OB);
+    makeAccount(OB);
     .
 
 +currentBid(V)[artifact_id(Art)]        // there is a new value for current bid

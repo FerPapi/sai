@@ -6,12 +6,11 @@
 { include("$jacamoJar/templates/common-moise.asl") }
 
 original_balance(0).
-
 !makeBankAccount.
 
 +!makeBankAccount : .my_name(Me) & .term2string(Me,MeS) & original_balance(OB)
     <-
-    makeAccount(MeS, OB);
+    makeAccount(OB);
     .
 
 +task(S)[artifact_id(Art)]:

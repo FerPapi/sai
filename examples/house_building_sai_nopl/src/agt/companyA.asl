@@ -13,7 +13,8 @@ original_balance(0).
 
 +!makeBankAccount : .my_name(Me) & .term2string(Me,MeS) & original_balance(OB)
     <-
-    makeAccount(MeS, OB);
+    makeAccount(OB);
+
     .
 
 
