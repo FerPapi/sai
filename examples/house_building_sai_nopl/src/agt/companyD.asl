@@ -8,9 +8,11 @@
 original_balance(0).
 !makeBankAccount.
 
-+!makeBankAccount : .my_name(Me) & .term2string(Me,MeS) & original_balance(OB)
++!makeBankAccount : original_balance(OB)
     <-
     makeAccount(OB);
+    checkValue(B);
+    -+original_balance(B);
     .
 
 +task(S)[artifact_id(Art)]:
