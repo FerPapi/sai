@@ -14,6 +14,7 @@ original_balance(0).
 +!makeBankAccount : original_balance(OB)
     <-
     makeAccount(OB);
+    depositValue(5000);
     checkValue(B);
     -+original_balance(B);
     .

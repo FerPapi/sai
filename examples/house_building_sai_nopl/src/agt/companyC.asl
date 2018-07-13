@@ -28,7 +28,7 @@ original_balance(0).
 
 !makeBankAccount.
 
-++!makeBankAccount : original_balance(OB)
++!makeBankAccount : original_balance(OB)
     <-
     makeAccount(OB);
     checkValue(B);

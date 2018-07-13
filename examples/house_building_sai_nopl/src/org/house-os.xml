@@ -60,7 +60,7 @@
        <goal id="get_site_prepared">
            <plan operator="sequence">
                <goal id="site_prepared"  ttf="20 minutes" ></goal>
-               <goal id="prep_site_paid"  ttf="20 minutes" ></goal>
+               <!-- <goal id="prep_site_paid"  ttf="20 minutes" ></goal> -->
            </plan>
        </goal>
        <goal id="floors_laid"      ttf="25 minutes" />
@@ -91,7 +91,7 @@
      <goal id="site_prepared" />
    </mission>
 
-   <mission id="pay_site_prep" min="1" max="1"> <goal id="prep_site_paid" ></goal> </mission>
+   <!-- <mission id="pay_site_prep" min="1" max="1"> <goal id="prep_site_paid" ></goal> </mission> -->
 
    <mission id="lay_floors" min="1" max="1">
      <goal id="floors_laid" />
@@ -133,7 +133,7 @@
 <norm id="n9"     type="obligation"    role="electrician"          mission="install_electrical_system" />
 <norm id="n10"    type="obligation"    role="painter"              mission="paint_house" />
 
-<norm id="n2.2"    type="obligation"   role="house_owner"          mission="pay_site_prep" ></norm>
+<!-- <norm id="n2.2"    type="obligation"   role="house_owner"          mission="pay_site_prep" ></norm> -->
 
 </normative-specification>
 
