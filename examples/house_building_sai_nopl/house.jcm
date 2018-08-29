@@ -105,25 +105,24 @@ mas house_building {
         artifact clock : cartago.tools.Clock()
     }
 
-   workspace wsp_sai {
+    workspace wsp_sai {
         artifact sai: sai.bridges.jacamo.ConstitutiveArt("bh","src/org/constitutive.sai")
-   }
+    }
 
-   workspace wsp_ora4mas {
-   	   artifact bhsch : sai.bridges.jacamo.SchemeBoardSai("src/org/house-os.xml", build_house_sch, "wsp_ora4mas")
-   	   artifact hsh_group : sai.bridges.jacamo.GroupBoardSai("src/org/house-os.xml", house_group, "wsp_ora4mas")
-   }
+    workspace wsp_ora4mas {
+        artifact bhsch : sai.bridges.jacamo.SchemeBoardSai("src/org/house-os.xml", build_house_sch, "wsp_ora4mas")
+        artifact hsh_group : sai.bridges.jacamo.GroupBoardSai("src/org/house-os.xml", house_group, "wsp_ora4mas")
+    }
 
+    workspace wsp_house{
+        artifact housegui: simulator.House
+    }
 
-  workspace wsp_house{
-  	  artifact housegui: simulator.House
-  }
+    workspace wsp_payment_infra{
+        artifact bank: tools.BankArt()
+    }
 
-  workspace wsp_payment_infra{
-      artifact bank: tools.BankArt()
-  }
+    asl-path:  src/agt, src/agt/inc
 
-   asl-path:  src/agt, src/agt/inc
-
-   //platform: cartago("infrastructure")
+    //platform: cartago("infrastructure")
 }

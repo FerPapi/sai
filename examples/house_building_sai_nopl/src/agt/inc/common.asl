@@ -21,17 +21,33 @@ i_am_winning(Art)   // check if I placed the current best bid on auction artifac
 //+obligation(Ag,Norm,achieved(Scheme,Goal,Ag),Deadline) //the agent perceives the obligation following the NPL notation
 +obligation(Ag,R,done(Scheme,Goal,Ag),Deadline) //the agent perceives the obligation following the NPL notation
    : .my_name(Ag) &
-     constitutive_rule(X,done(Scheme,Goal,Ag),ToDo[sai__agent(Ag)],M) & //The agent looks for a constitutive rule defining how the goal is achieved
+    constitutive_rule(X,done(Scheme,Goal,Ag),ToDo[sai__agent(Ag)],M) & //The agent looks for a constitutive rule defining how the goal is achieved
      X==sai__freestandingY & T\==true
    <-
    println("I am obliged to ",Goal,". I found a constitutive rule that shows me. I have to produce the event ", ToDo);
    if (ToDo==payment) {
-       println("Ag,R,done(Scheme,Goal,Ag),Deadline", Ag,R,done(Scheme,Goal,Ag),Deadline)
-       println("constitutive_rule(X,done(Scheme,Goal,Ag),ToDo[sai__agent(Ag)],M)", constitutive_rule(X,done(Scheme,Goal,Ag),ToDo[sai__agent(Ag)],M));
+       println("---xx---");
+       println("Agent: ", Ag)
+       println("Requisit: ", R);
+       println("Scheme: ", Scheme);
+       println("Goal: ", Goal);
+    //    println("done(Scheme,Goal,Ag)", done(Scheme,Goal,Ag));
+       println("Deadline: ",Deadline);
+       println("constitutive Rule: ", constitutive_rule);
+       println("X: ", X);
+       println("ToDo: ", ToDo);
+    //    println("Recipient Agent: ", sai__agent(RecipientAgent));
+       println("sai__agent(Ag): ", sai__agent(Ag));
+    //    println("constitutive_rule(X,done(Scheme,Goal,Ag),ToDo[sai__agent(Ag)],M)", constitutive_rule(X,done(Scheme,Goal,Ag),ToDo[sai__agent(Ag)],M));
        println("ToDo[artifact_id(House)] :", ToDo[artifact_id(House)]);
+       println("---xx---");
        ToDo[artifact_id(House)];
    }
    else {
+       println("-x-");
+       println(ToDo[artifact_id(House)]);
+       println(M);
+       println("-x-");
        joinWorkspace("wsp_house",I);
        lookupArtifact("housegui",House);
        focus(House);
@@ -54,4 +70,13 @@ i_am_winning(Art)   // check if I placed the current best bid on auction artifac
 +obligation(Ag,R,What,DeadLine)
    : .my_name(Ag)
    <-
-   println("I am obliged to ",What,", but I don't know what to do!").
+   println("I ", Ag, " am obliged to ", What, ", but I don't know what to do!").
+
+
++obligation(Ag,R,done(Scheme,Goal,Ag),Deadline) //the agent perceives the obligation following the NPL notation
+    : .my_name(Ag) &
+    constitutive_rule(X,done(Scheme,Goal,Ag),ToDo[sai__agent(Ag), sai__agent(Ag)],M) & //The agent looks for a constitutive rule defining how the goal is achieved
+    X==sai__freestandingY & T\==true
+    <-
+    println("I am HERE");
+    .
