@@ -25,7 +25,7 @@ i_am_winning(Art)   // check if I placed the current best bid on auction artifac
      X==sai__freestandingY & T\==true
    <-
    println("I am obliged to ",Goal,". I found a constitutive rule that shows me. I have to produce the event ", ToDo);
-   if (ToDo==payment) {
+   if (ToDo==payment(200)) {
        println("---xx---");
        println("Agent: ", Ag)
        println("Requisit: ", R);
@@ -39,9 +39,13 @@ i_am_winning(Art)   // check if I placed the current best bid on auction artifac
     //    println("Recipient Agent: ", sai__agent(RecipientAgent));
        println("sai__agent(Ag): ", sai__agent(Ag));
     //    println("constitutive_rule(X,done(Scheme,Goal,Ag),ToDo[sai__agent(Ag)],M)", constitutive_rule(X,done(Scheme,Goal,Ag),ToDo[sai__agent(Ag)],M));
-       println("ToDo[artifact_id(House)] :", ToDo[artifact_id(House)]);
+       joinWorkspace("wsp_payment_infra",I);
+       lookupArtifact("bank",Bank);
+       focus(Bank);
+       .wait(100); //to avoid some problems: ORA4MAS seems being processing previous goal states when SAI constitutes some new achievements. To check.
+       println("ToDo[artifact_id(Bank)] :", ToDo[artifact_id(Bank)]);
+       ToDo[artifact_id(Bank)];
        println("---xx---");
-       ToDo[artifact_id(House)];
    }
    else {
        println("-x-");
@@ -56,6 +60,13 @@ i_am_winning(Art)   // check if I placed the current best bid on auction artifac
    }
    .
 
++obligation(Ag,R,done(Scheme,Goal,Ag),Deadline) //the agent perceives the obligation following the NPL notation
+   : .my_name(Ag) &
+   constitutive_rule(X,paid(Scheme,Goal,Ag),payment(Price)[sai__agent(Ag)], M) & //The agent looks for a constitutive rule defining how the goal is achieved
+   X==sai__freestandingY & T\==true
+   <-
+   println("I am HERE");
+   .
 
 // obligation to achieve a goal
 +obligation(Ag,achieved(Scheme,Goal,Ag),Deadline)
@@ -71,12 +82,3 @@ i_am_winning(Art)   // check if I placed the current best bid on auction artifac
    : .my_name(Ag)
    <-
    println("I ", Ag, " am obliged to ", What, ", but I don't know what to do!").
-
-
-+obligation(Ag,R,done(Scheme,Goal,Ag),Deadline) //the agent perceives the obligation following the NPL notation
-    : .my_name(Ag) &
-    constitutive_rule(X,done(Scheme,Goal,Ag),ToDo[sai__agent(Ag), sai__agent(Ag)],M) & //The agent looks for a constitutive rule defining how the goal is achieved
-    X==sai__freestandingY & T\==true
-    <-
-    println("I am HERE");
-    .
