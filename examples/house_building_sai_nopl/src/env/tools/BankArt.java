@@ -81,10 +81,10 @@ public class BankArt extends Artifact {
 
     @OPERATION public void payment(int value) {
         // ObsProperty opCurrentBalance = getObsProperty("currentBalance");
-        System.out.println("==XXX PAYMENT " + value + " XXX===");
+        System.out.println("==XXX PAYMENT OF" + value + " XXX===");
     }
 
-    @OPERATION public void transferValue(String recipientAgent, int value) {
+    @OPERATION public void transferValue(int value, String recipientAgent) {
         // ObsProperty opCurrentBalance = getObsProperty("currentBalance");
         String client = getOpUserName();
         System.out.println("Transfering " + value + " from " + client + " to " + recipientAgent);
@@ -92,6 +92,9 @@ public class BankArt extends Artifact {
             if (accountValue.get(client) >= value) {
                 accountValue.put(recipientAgent, accountValue.get(recipientAgent)+value);
                 accountValue.put(client, accountValue.get(client)-value);
+                System.out.println("Done!");
+                Integer accValue = accountValue.get(recipientAgent);
+                System.out.println("Value in "+ recipientAgent+ " account: "+ Integer.toString(accValue));
             } else { System.out.println("Insufficient Funds");}
         } else {System.out.println("Client not found: " + recipientAgent);}
 
