@@ -36,6 +36,8 @@ i_am_winning(Art)   // check if I placed the current best bid on auction artifac
     println("---xx---");
     .
 
++!pay()
+
 
 +obligation(Ag,R,done(Scheme,Goal,Ag),Deadline) //the agent perceives the obligation following the NPL notation
    : .my_name(Ag) &

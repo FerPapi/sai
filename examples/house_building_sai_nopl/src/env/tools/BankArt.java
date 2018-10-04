@@ -95,8 +95,14 @@ public class BankArt extends Artifact {
                 System.out.println("Done!");
                 Integer accValue = accountValue.get(recipientAgent);
                 System.out.println("Value in "+ recipientAgent+ " account: "+ Integer.toString(accValue));
-            } else { System.out.println("Insufficient Funds");}
-        } else {System.out.println("Client not found: " + recipientAgent);}
+            }
+            else {
+                System.out.println("Insufficient Funds");
+            }
+        }
+        else {
+            System.out.println("Client not found: " + recipientAgent);
+        }
 
     }
 

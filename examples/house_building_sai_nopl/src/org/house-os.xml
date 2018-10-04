@@ -57,13 +57,19 @@
    <goal id="house_built">
      <plan operator="sequence">
        <!-- <goal id="site_prepared"    ttf="20 minutes" ds="prepare the site for the next tasks"/> -->
-       <goal id="get_site_prepared">
+       <goal id="get_site_prepared"     ttf="20 minutes" ds="prepare the site for the next tasks">
            <plan operator="sequence">
                <goal id="site_prepared"  ttf="20 minutes" ></goal>
                <goal id="prep_site_paid"  ttf="20 minutes" ></goal>
            </plan>
        </goal>
-       <goal id="floors_laid"      ttf="25 minutes" />
+       <!-- <goal id="floors_laid"      ttf="25 minutes" /> -->
+       <goal id="get_floors_laid"     ttf="20 minutes" ds="prepare the floor for the next tasks">
+           <plan operator="sequence">
+               <goal id="floors_laid"  ttf="20 minutes" ></goal>
+               <goal id="lay_floors_paid"  ttf="20 minutes" ></goal>
+           </plan>
+       </goal>
        <goal id="walls_built"      ttf="40 minutes" />
        <goal id="rwd">
           <plan operator="parallel">
@@ -90,7 +96,6 @@
    <mission id="prepare_site" min="1" max="1">
      <goal id="site_prepared" />
    </mission>
-
    <mission id="pay_site_prep" min="1" max="1">
        <goal id="prep_site_paid" ></goal>
    </mission>
@@ -98,6 +103,11 @@
    <mission id="lay_floors" min="1" max="1">
      <goal id="floors_laid" />
    </mission>
+   <mission id="pay_laid_floors" min="1" max="1">
+     <goal id="lay_floors_paid" />
+   </mission>
+
+
    <mission id="build_walls" min="1" max="1">
      <goal id="walls_built" />
    </mission>
@@ -136,6 +146,7 @@
 <norm id="n10"    type="obligation"    role="painter"              mission="paint_house" />
 
 <norm id="n2.2"    type="obligation"   role="house_owner"          mission="pay_site_prep" ></norm>
+<norm id="n2.2"    type="obligation"   role="house_owner"          mission="pay_laid_floors" ></norm>
 
 </normative-specification>
 

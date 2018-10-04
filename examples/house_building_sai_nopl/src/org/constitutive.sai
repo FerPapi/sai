@@ -104,6 +104,10 @@ constitutive_rules:
      count-as committed(A,pay_site_prep,"bhsch")
      while responsible("hsh_group","bhsch").
 
+101: play(A,house_owner,"hsh_group")
+     count-as committed(A,pay_laid_floors,"bhsch")
+     while responsible("hsh_group","bhsch").
+
 
 /* Rules 23 to 22: the occurrence of some events in the environment counts-as, in the institution, the state achieved(S,G,A) */
 22: count-as achieved("bhsch",site_prepared,Agent)
@@ -139,8 +143,17 @@ constitutive_rules:
 32: count-as achieved("bhsch",interior_painted,Agent)
     when paintInterior[sai__agent(Agent)].
 
-101: count-as achieved("bhsch",prep_site_paid,Agent)
-     when payment(200)[sai__agent(Agent)].
+200: count-as achieved("bhsch",prep_site_paid,Agent)
+     when transferValue(V,X)[sai__agent(Agent)]
+     while play(X,site_prep_contractor,"hsh_group")
+     & currentBid(auction_for_SitePreparation, V)
+     .
+201: count-as achieved("bhsch",lay_floors_paid,Agent)
+     when transferValue(V,X)[sai__agent(Agent)]
+     while play(X,bricklayer,"hsh_group")
+     & currentBid(auction_for_Floors, V)
+     .
+
 
 
 /* Rules 23 to 22: the occurrence of some events in the environment counts-as, in the institution, the state achieved(S,G,A) */
@@ -177,8 +190,14 @@ constitutive_rules:
 32: count-as done(bhsch,interior_painted,Agent)
     when paintInterior[sai__agent(Agent)].
 
-102: count-as done(bhsch, prep_site_paid,Agent)
+300: count-as done(bhsch, prep_site_paid,Agent)
      when transferValue(V,X)[sai__agent(Agent)]
      while play(X,site_prep_contractor,"hsh_group")
      & currentBid(auction_for_SitePreparation, V)
+     .
+
+301: count-as done(bhsch, prep_site_paid,Agent)
+     when transferValue(V,X)[sai__agent(Agent)]
+     while play(X,bricklayer,"hsh_group")
+     & currentBid(auction_for_Floors, V)
      .
