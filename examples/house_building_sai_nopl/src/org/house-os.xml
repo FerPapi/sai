@@ -91,7 +91,9 @@
      <goal id="site_prepared" />
    </mission>
 
-   <mission id="pay_site_prep" min="1" max="1"> <goal id="prep_site_paid" ></goal> </mission>
+   <mission id="pay_site_prep" min="1" max="1">
+       <goal id="prep_site_paid" ></goal>
+   </mission>
 
    <mission id="lay_floors" min="1" max="1">
      <goal id="floors_laid" />
