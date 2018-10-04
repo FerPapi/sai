@@ -28,6 +28,7 @@ i_am_winning(Art)   // check if I placed the current best bid on auction artifac
     <-
     println("---xx---");
     println("I am obliged to ", prep_site_paid,". I found a constitutive rule that shows me. I have to produce the event payment(", V,",",Creditor,")");
+    // !pay(V,Creditor);
     joinWorkspace("wsp_payment_infra",I);
     lookupArtifact("bank",Bank);
     focus(Bank);
@@ -35,6 +36,17 @@ i_am_winning(Art)   // check if I placed the current best bid on auction artifac
     transferValue(V,Creditor);
     println("---xx---");
     .
+
+// +!pay(Value,Creditor)
+//     <-
+//     joinWorkspace("wsp_payment_infra",I);
+//     lookupArtifact("bank",Bank);
+//     focus(Bank);
+//     .wait(100); //to avoid some problems: ORA4MAS seems being processing previous goal states when SAI constitutes some new achievements. To check.
+//     transferValue(V,Creditor);
+//     println("---xx---");
+//     .
+
 
 
 +obligation(Ag,R,done(Scheme,Goal,Ag),Deadline) //the agent perceives the obligation following the NPL notation

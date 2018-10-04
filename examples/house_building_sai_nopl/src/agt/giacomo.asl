@@ -7,7 +7,7 @@
 
 
 /* Initial beliefs and rules */
-original_balance(150).
+original_balance(0).
 // counts the number of tasks based on the observable properties of the auction artifacts
 number_of_tasks(NS) :- .findall( S, task(S), L) & .length(L,NS).
 
@@ -31,7 +31,7 @@ number_of_tasks(NS) :- .findall( S, task(S), L) & .length(L,NS).
 +!makeBankAccount : original_balance(OB)
     <-
     makeAccount(OB);
-    depositValue(1234);
+    depositValue(10000);
     checkValue(B);
     -+original_balance(B);
     !tell_balance;
