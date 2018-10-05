@@ -101,13 +101,8 @@ constitutive_rules:
     while responsible("hsh_group","bhsch").
 
 100: play(A,house_owner,"hsh_group")
-     count-as committed(A,pay_site_prep,"bhsch")
+     count-as committed(A,payments,"bhsch")
      while responsible("hsh_group","bhsch").
-
-101: play(A,house_owner,"hsh_group")
-     count-as committed(A,pay_laid_floors,"bhsch")
-     while responsible("hsh_group","bhsch").
-
 
 /* Rules 23 to 22: the occurrence of some events in the environment counts-as, in the institution, the state achieved(S,G,A) */
 22: count-as achieved("bhsch",site_prepared,Agent)
@@ -148,12 +143,36 @@ constitutive_rules:
      while play(X,site_prep_contractor,"hsh_group")
      & currentBid(auction_for_SitePreparation, V)
      .
+
 201: count-as achieved("bhsch",lay_floors_paid,Agent)
      when transferValue(V,X)[sai__agent(Agent)]
      while play(X,bricklayer,"hsh_group")
      & currentBid(auction_for_Floors, V)
      .
 
+202: count-as achieved("bhsch",build_walls_paid,Agent)
+     when transferValue(V,X)[sai__agent(Agent)]
+     while play(X,bricklayer,"hsh_group")
+     & currentBid(auction_for_Walls, V)
+     .
+
+203: count-as achieved("bhsch",roof_paid,Agent)
+     when transferValue(V,X)[sai__agent(Agent)]
+     while play(X,roofer,"hsh_group")
+     & currentBid(auction_for_Roof, V)
+     .
+
+204: count-as achieved("bhsch",windows_paid,Agent)
+     when transferValue(V,X)[sai__agent(Agent)]
+     while play(X,window_fitter,"hsh_group")
+     & currentBid(auction_for_WindowsDoors, V)
+     .
+
+205: count-as achieved("bhsch",doors_paid,Agent)
+     when transferValue(V,X)[sai__agent(Agent)]
+     while play(X,door_fitter,"hsh_group")
+     & currentBid(auction_for_WindowsDoors, V)
+     .
 
 
 /* Rules 23 to 22: the occurrence of some events in the environment counts-as, in the institution, the state achieved(S,G,A) */
@@ -196,8 +215,32 @@ constitutive_rules:
      & currentBid(auction_for_SitePreparation, V)
      .
 
-301: count-as done(bhsch, prep_site_paid,Agent)
+301: count-as done(bhsch, lay_floors_paid,Agent)
      when transferValue(V,X)[sai__agent(Agent)]
      while play(X,bricklayer,"hsh_group")
      & currentBid(auction_for_Floors, V)
+     .
+
+302: count-as done(bhsch, build_walls_paid,Agent)
+     when transferValue(V,X)[sai__agent(Agent)]
+     while play(X,bricklayer,"hsh_group")
+     & currentBid(auction_for_Walls, V)
+     .
+
+303: count-as done(bhsch, roof_paid,Agent)
+     when transferValue(V,X)[sai__agent(Agent)]
+     while play(X,roofer,"hsh_group")
+     & currentBid(auction_for_Roof, V)
+     .
+
+304: count-as done(bhsch, windows_paid,Agent)
+     when transferValue(V,X)[sai__agent(Agent)]
+     while play(X,window_fitter,"hsh_group")
+     & currentBid(auction_for_WindowsDoors, V)
+     .
+
+305: count-as done(bhsch, doors_paid,Agent)
+     when transferValue(V,X)[sai__agent(Agent)]
+     while play(X,door_fitter,"hsh_group")
+     & currentBid(auction_for_WindowsDoors, V)
      .
