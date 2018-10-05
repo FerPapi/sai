@@ -117,14 +117,14 @@
                    </plan>
                </goal>
 
-               <!-- <goal id="pay_pee">
+               <goal id="pay_pee">
                    <plan operator="parallel">
                        <goal id="plumbing_paid"  ttf="20 minutes" ></goal>
-                       <goal id="electrical_system_paid"  ttf="20 minutes" ></goal>
+                       <!-- <goal id="electrical_system_paid"  ttf="20 minutes" ></goal>
                        <goal id="exterior_paint_paid"  ttf="20 minutes" ></goal>
-                       <goal id="interior_paint_paid"  ttf="30 minutes" />
+                       <goal id="interior_paint_paid"  ttf="30 minutes" /> -->
                    </plan>
-               </goal> -->
+               </goal>
           </plan>
        </goal>
 
@@ -185,8 +185,8 @@
        <goal id="windows_paid" />
        <goal id="doors_paid" />
 
-       <!-- <goal id="plumbing_paid" />
-       <goal id="electrical_system_paid" />
+       <goal id="plumbing_paid" />
+       <!-- <goal id="electrical_system_paid" />
        <goal id="exterior_paint_paid" />
        <goal id="interior_paint_paid" /> -->
    </mission>
