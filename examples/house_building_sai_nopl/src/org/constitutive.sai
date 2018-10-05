@@ -274,7 +274,7 @@ constitutive_rules:
      & currentBid(auction_for_ElectricalSystem, V)
      .
 
- 308: count-as done(bhsch, exterior_paint_paid,Agent)
+308: count-as done(bhsch, exterior_paint_paid,Agent)
       when transferValue(V,X)[sai__agent(Agent)]
       while play(X,painter,"hsh_group")
       & currentBid(auction_for_Painting, V)
