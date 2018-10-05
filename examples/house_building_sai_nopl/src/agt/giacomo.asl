@@ -31,7 +31,7 @@ number_of_tasks(NS) :- .findall( S, task(S), L) & .length(L,NS).
 +!makeBankAccount : original_balance(OB)
     <-
     makeAccount(OB);
-    depositValue(10000);
+    depositValue(100000);
     checkValue(B);
     -+original_balance(B);
     !tell_balance;

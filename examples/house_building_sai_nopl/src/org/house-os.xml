@@ -120,9 +120,9 @@
                <goal id="pay_pee">
                    <plan operator="parallel">
                        <goal id="plumbing_paid"  ttf="20 minutes" ></goal>
-                       <!-- <goal id="electrical_system_paid"  ttf="20 minutes" ></goal>
+                       <goal id="electrical_system_paid"  ttf="20 minutes" ></goal>
                        <goal id="exterior_paint_paid"  ttf="20 minutes" ></goal>
-                       <goal id="interior_paint_paid"  ttf="30 minutes" /> -->
+                       <goal id="interior_paint_paid"  ttf="30 minutes" />
                    </plan>
                </goal>
           </plan>
@@ -138,40 +138,35 @@
    <mission id="prepare_site" min="1" max="1">
      <goal id="site_prepared" />
    </mission>
-   <!-- <mission id="pay_site_prep" min="1" max="1">
-       <goal id="prep_site_paid" ></goal>
-   </mission> -->
 
    <mission id="lay_floors" min="1" max="1">
      <goal id="floors_laid" />
    </mission>
-   <!-- <mission id="pay_laid_floors" min="1" max="1">
-     <goal id="lay_floors_paid" />
-   </mission> -->
-
 
    <mission id="build_walls" min="1" max="1">
      <goal id="walls_built" />
    </mission>
-   <!-- <mission id="pay_build_wall" min="1" max="1">
-     <goal id="build_walls_paid" />
-   </mission> -->
 
    <mission id="build_roof" min="1" max="1">
      <goal id="roof_built" />
    </mission>
+
    <mission id="fit_windows" min="1" max="1">
      <goal id="windows_fitted" />
    </mission>
+
    <mission id="fit_doors" min="1" max="1">
      <goal id="doors_fitted" />
    </mission>
+
    <mission id="install_plumbing" min="1" max="1">
      <goal id="plumbing_installed" />
    </mission>
+
    <mission id="install_electrical_system" min="1" max="1">
      <goal id="electrical_system_installed" />
    </mission>
+   
    <mission id="paint_house" min="1" max="1">
      <goal id="exterior_painted" />
      <goal id="interior_painted" />
@@ -186,9 +181,9 @@
        <goal id="doors_paid" />
 
        <goal id="plumbing_paid" />
-       <!-- <goal id="electrical_system_paid" />
+       <goal id="electrical_system_paid" />
        <goal id="exterior_paint_paid" />
-       <goal id="interior_paint_paid" /> -->
+       <goal id="interior_paint_paid" />
    </mission>
  </scheme>
 </functional-specification>

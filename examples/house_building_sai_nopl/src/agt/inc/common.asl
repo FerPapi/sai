@@ -97,28 +97,28 @@ i_am_winning(Art)   // check if I placed the current best bid on auction artifac
     println("I am obliged to ", plumbing_paid,". I found a constitutive rule that shows me. I have to produce the event payment(", V,",",Creditor,")");
     !pay(V,Creditor)
     .
+
++obligation(Ag,R,done(Scheme,electrical_system_paid,Ag),Deadline)
+    : .my_name(Ag) &
+    constitutive_rule(sai__freestandingY, done(Scheme, electrical_system_paid,Agent),transferValue(V, Creditor)[sai__agent(Agent)],_)
+    & play(Creditor,electrician,_)
+    & currentBid(V)[artifact_name(_, auction_for_ElectricalSystem)]
+    <-
+    println("---xx---");
+    println("I am obliged to ", electrical_system_paid,". I found a constitutive rule that shows me. I have to produce the event payment(", V,",",Creditor,")");
+    !pay(V,Creditor)
+    .
 //
-// +obligation(Ag,R,done(Scheme,electrical_system_paid,Ag),Deadline)
-//     : .my_name(Ag) &
-//     constitutive_rule(sai__freestandingY, done(Scheme, electrical_system_paid,Agent),transferValue(V, Creditor)[sai__agent(Agent)],_)
-//     & play(Creditor,electrician,_)
-//     & currentBid(V)[artifact_name(_, auction_for_ElectricalSystem)]
-//     <-
-//     println("---xx---");
-//     println("I am obliged to ", electrical_system_paid,". I found a constitutive rule that shows me. I have to produce the event payment(", V,",",Creditor,")");
-//     !pay(V,Creditor)
-//     .
-//
-// +obligation(Ag,R,done(Scheme,exterior_paint_paid,Ag),Deadline)
-//     : .my_name(Ag) &
-//     constitutive_rule(sai__freestandingY, done(Scheme, exterior_paint_paid,Agent),transferValue(V, Creditor)[sai__agent(Agent)],_)
-//     & play(Creditor,painter,_)
-//     & currentBid(V)[artifact_name(_, auction_for_Painting)]
-//     <-
-//     println("---xx---");
-//     println("I am obliged to ", exterior_paint_paid,". I found a constitutive rule that shows me. I have to produce the event payment(", V,",",Creditor,")");
-//     !pay(V,Creditor)
-//     .
++obligation(Ag,R,done(Scheme,exterior_paint_paid,Ag),Deadline)
+    : .my_name(Ag) &
+    constitutive_rule(sai__freestandingY, done(Scheme, exterior_paint_paid,Agent),transferValue(V, Creditor)[sai__agent(Agent)],_)
+    & play(Creditor,painter,_)
+    & currentBid(V)[artifact_name(_, auction_for_Painting)]
+    <-
+    println("---xx---");
+    println("I am obliged to ", exterior_paint_paid,". I found a constitutive rule that shows me. I have to produce the event payment(", V,",",Creditor,")");
+    !pay(V,Creditor)
+    .
 //
 // +obligation(Ag,R,done(Scheme,interior_paint_paid,Ag),Deadline)
 //     : .my_name(Ag) &
