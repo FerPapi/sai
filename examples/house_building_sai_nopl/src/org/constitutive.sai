@@ -192,6 +192,12 @@ constitutive_rules:
       & currentBid(auction_for_Painting, V)
       .
 
+208: count-as achieved("bhsch",interior_paint_paid,Agent)
+     when transferValue(V,X)[sai__agent(Agent)]
+     while play(X,painter,"hsh_group")
+     & currentBid(auction_for_Painting, V)
+     .
+
 /* Rules 23 to 22: the occurrence of some events in the environment counts-as, in the institution, the state achieved(S,G,A) */
 22: count-as done(bhsch,site_prepared,Agent)
     when prepareSite[sai__agent(Agent)].
@@ -279,3 +285,9 @@ constitutive_rules:
       while play(X,painter,"hsh_group")
       & currentBid(auction_for_Painting, V)
       .
+
+309: count-as done(bhsch, interior_paint_paid,Agent)
+     when transferValue(V,X)[sai__agent(Agent)]
+     while play(X,painter,"hsh_group")
+     & currentBid(auction_for_Painting, V)
+     .
