@@ -119,7 +119,8 @@ mas house_building {
     }
 
     workspace wsp_payment_infra{
-        artifact bank: tools.BankArt()
+        /* artifact bank: tools.BankArt() */
+        artifact bank: tools.BankArtEth()
     }
 
     asl-path:  src/agt, src/agt/inc
